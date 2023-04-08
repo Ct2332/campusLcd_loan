@@ -1,0 +1,52 @@
+import 'package:flutter/material.dart';
+import 'package:lcd_loan/core.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import '../controller/main_navigation_controller.dart';
+
+class MainNavigationView extends StatefulWidget {
+  const MainNavigationView({Key? key}) : super(key: key);
+
+  Widget build(context, MainNavigationController controller) {
+    controller.view = this;
+
+    return Scaffold(
+      bottomNavigationBar: PersistentTabView(
+        context,
+        controller: controller.navController,
+        onItemSelected: (index) => controller.updateIndex(index: index),
+        screens: controller.buildScreens(),
+        items: controller.navBarsItems(),
+        confineInSafeArea: true,
+        backgroundColor: Colors.white, // Default is Colors.white.
+        handleAndroidBackButtonPress: true, // Default is true.
+        resizeToAvoidBottomInset:
+            true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
+        stateManagement: true, // Default is true.
+        hideNavigationBarWhenKeyboardShows:
+            true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
+        decoration: NavBarDecoration(
+          borderRadius: BorderRadius.circular(10.0),
+          colorBehindNavBar: Colors.white,
+        ),
+        popAllScreensOnTapOfSelectedTab: true,
+        popActionScreens: PopActionScreensType.all,
+        itemAnimationProperties: const ItemAnimationProperties(
+          // Navigation Bar's items animation properties.
+          duration: Duration(milliseconds: 200),
+          curve: Curves.ease,
+        ),
+        screenTransitionAnimation: const ScreenTransitionAnimation(
+          // Screen transition animation on change of selected tab.
+          animateTabTransition: true,
+          curve: Curves.ease,
+          duration: Duration(milliseconds: 200),
+        ),
+        navBarStyle:
+            NavBarStyle.style15, // Choose the nav bar style with this property.
+      ),
+    );
+  }
+
+  @override
+  State<MainNavigationView> createState() => MainNavigationController();
+}

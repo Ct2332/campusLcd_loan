@@ -1,5 +1,6 @@
-import 'package:lcd_loan/module/home/view/home_view.dart';
 import 'package:lcd_loan/state_util.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:lcd_loan/core.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,8 +18,10 @@ class MyApp extends StatelessWidget {
       navigatorKey: Get.navigatorKey,
       theme: ThemeData(
         primarySwatch: Colors.amber,
+        textTheme: GoogleFonts.openSansTextTheme(),
+        useMaterial3: true,
       ),
-      home: const HomeView(),
+      home: const MainNavigationView(),
     );
   }
 }

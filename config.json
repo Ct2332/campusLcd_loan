@@ -1,6 +1,7 @@
 {
     "openai_key": "",
     "modules": [
+        "main_navigation",
         "home",
         "history",
         "scanner"
