@@ -16,19 +16,19 @@ class MainNavigationView extends StatefulWidget {
         onItemSelected: (index) => controller.updateIndex(index: index),
         screens: controller.buildScreens(),
         items: controller.navBarsItems(),
-        confineInSafeArea: true,
-        backgroundColor: Colors.white, // Default is Colors.white.
-        handleAndroidBackButtonPress: true, // Default is true.
+        backgroundColor:
+            Colors.white, // Default is Colors.white.// Default is true.
         resizeToAvoidBottomInset:
             true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
-        stateManagement: true, // Default is true.
         hideNavigationBarWhenKeyboardShows:
             true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
-        decoration: NavBarDecoration(
-          borderRadius: BorderRadius.circular(10.0),
+        decoration: const NavBarDecoration(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(35),
+            topRight: Radius.circular(35),
+          ),
           colorBehindNavBar: Colors.white,
         ),
-        popAllScreensOnTapOfSelectedTab: true,
         popActionScreens: PopActionScreensType.all,
         itemAnimationProperties: const ItemAnimationProperties(
           // Navigation Bar's items animation properties.

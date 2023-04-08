@@ -48,36 +48,37 @@ class MainNavigationController extends State<MainNavigationView>
           'assets/icons/dashboard.svg',
           height: 20,
           colorFilter: ColorFilter.mode(
-            navController.index == 0 ? Colors.red : Colors.black,
+            navController.index == 0
+                ? Colors.amber
+                : Colors.grey.withOpacity(0.4),
             BlendMode.srcIn,
           ),
         ),
-        activeColorPrimary: Colors.blue,
-        inactiveColorPrimary: Colors.grey,
       ),
       PersistentBottomNavBarItem(
         icon: SvgPicture.asset(
           'assets/icons/scanner.svg',
           height: 20,
           colorFilter: ColorFilter.mode(
-            navController.index == 1 ? Colors.red : Colors.black,
+            navController.index == 1 ? Colors.black : Colors.grey,
             BlendMode.srcIn,
           ),
         ),
-        activeColorPrimary: Colors.blue,
-        inactiveColorPrimary: Colors.grey,
+        activeColorPrimary: navController.index == 1
+            ? Colors.amber
+            : Colors.grey.withOpacity(0.5),
       ),
       PersistentBottomNavBarItem(
         icon: SvgPicture.asset(
           'assets/icons/history.svg',
           height: 20,
           colorFilter: ColorFilter.mode(
-            navController.index == 2 ? Colors.red : Colors.black,
+            navController.index == 2
+                ? Colors.amber
+                : Colors.grey.withOpacity(0.4),
             BlendMode.srcIn,
           ),
         ),
-        activeColorPrimary: Colors.blue,
-        inactiveColorPrimary: Colors.grey,
       ),
     ];
   }
