@@ -16,6 +16,7 @@ class StScannerButton extends StatelessWidget {
       onPressed: onTap,
       child: SvgPicture.asset(
         'assets/icons/scanner.svg',
+        colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
       ),
     );
   }

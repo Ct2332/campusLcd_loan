@@ -14,7 +14,7 @@ stTabBarItem({
       'assets/icons/$iconUrl',
       height: 18,
       colorFilter: ColorFilter.mode(
-        Colors.indigo.withOpacity(0.4),
+        Colors.indigo.withOpacity(0.3),
         BlendMode.srcIn,
       ),
     ),
