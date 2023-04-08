@@ -10,6 +10,7 @@ class StHistoryView extends StatefulWidget {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.amber,
         title: const Text("StHistory"),
         actions: const [],
       ),

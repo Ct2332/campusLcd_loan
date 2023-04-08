@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lcd_loan/core.dart';
+import 'package:lcd_loan/module/student/st_home/widget/st_home_app_bar.dart';
+import 'package:lcd_loan/module/student/st_home/widget/st_top_profile.dart';
 import '../controller/st_home_controller.dart';
 
 class StHomeView extends StatefulWidget {
@@ -11,12 +13,14 @@ class StHomeView extends StatefulWidget {
     return Scaffold(
       body: SafeArea(
         minimum: const EdgeInsets.only(
-          top: 35,
+          top: 45,
           left: 20,
           right: 20,
         ),
-        child: Container(
-          color: Colors.red,
+        child: ListView(
+          children: const [
+            StTopProfile(),
+          ],
         ),
       ),
     );

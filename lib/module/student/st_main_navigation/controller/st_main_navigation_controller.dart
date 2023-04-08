@@ -1,12 +1,12 @@
 import 'dart:developer';
 
+import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lcd_loan/module/student/st_history/view/st_history_view.dart';
 import 'package:lcd_loan/module/student/st_home/view/st_home_view.dart';
+import 'package:lcd_loan/module/student/st_main_navigation/widget/st_tab_bar_item.dart';
 import 'package:lcd_loan/module/student/st_scanner/view/st_scanner_view.dart';
 import 'package:lcd_loan/state_util.dart';
-import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import '../view/st_main_navigation_view.dart';
 
 class StMainNavigationController extends State<StMainNavigationView>
@@ -26,60 +26,29 @@ class StMainNavigationController extends State<StMainNavigationView>
   @override
   Widget build(BuildContext context) => widget.build(context, this);
 
-  final PersistentTabController navController =
-      PersistentTabController(initialIndex: 0);
+  int selectedIndex = 0;
 
-  updateIndex({required int index}) {
-    navController.index = index;
-    log("Current Index = ${navController.index}");
-    setState(() {});
+  onItemSelected(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
   }
 
-  List<Widget> buildScreens() {
-    return const [
-      StHomeView(),
-      StScannerView(),
-      StHistoryView(),
-    ];
-  }
+  List<Widget> widgetOptions = const [
+    StHomeView(),
+    StScannerView(),
+    StHistoryView(),
+  ];
 
-  List<PersistentBottomNavBarItem> navBarsItems() {
+  List<FlashyTabBarItem> navBarsItems() {
     return [
-      PersistentBottomNavBarItem(
-        icon: SvgPicture.asset(
-          'assets/icons/dashboard.svg',
-          height: 20,
-          colorFilter: ColorFilter.mode(
-            navController.index == 0
-                ? Colors.amber
-                : Colors.grey.withOpacity(0.4),
-            BlendMode.srcIn,
-          ),
-        ),
+      stTabBarItem(
+        iconUrl: 'dashboard.svg',
+        title: 'Dashboard',
       ),
-      PersistentBottomNavBarItem(
-        icon: SvgPicture.asset(
-          'assets/icons/scanner.svg',
-          height: 20,
-          colorFilter: ColorFilter.mode(
-            navController.index == 1 ? Colors.black : Colors.grey,
-            BlendMode.srcIn,
-          ),
-        ),
-        activeColorPrimary:
-            navController.index == 1 ? Colors.amber : Colors.grey[300]!,
-      ),
-      PersistentBottomNavBarItem(
-        icon: SvgPicture.asset(
-          'assets/icons/history.svg',
-          height: 20,
-          colorFilter: ColorFilter.mode(
-            navController.index == 2
-                ? Colors.amber
-                : Colors.grey.withOpacity(0.4),
-            BlendMode.srcIn,
-          ),
-        ),
+      stTabBarItem(
+        iconUrl: 'history.svg',
+        title: 'History',
       ),
     ];
   }
