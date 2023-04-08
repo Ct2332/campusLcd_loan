@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lcd_loan/core.dart';
-import 'package:lcd_loan/module/student/st_home/widget/st_home_app_bar.dart';
+import 'package:lcd_loan/module/student/st_home/widget/st_scanner_button.dart';
 import 'package:lcd_loan/module/student/st_home/widget/st_top_profile.dart';
 import '../controller/st_home_controller.dart';
 
@@ -22,6 +23,9 @@ class StHomeView extends StatefulWidget {
             StTopProfile(),
           ],
         ),
+      ),
+      floatingActionButton: StScannerButton(
+        onTap: () => controller.scanQrCode(),
       ),
     );
   }

@@ -1,4 +1,3 @@
-import 'package:lcd_loan/state_util.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lcd_loan/core.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       navigatorKey: Get.navigatorKey,
       theme: ThemeData(
-        primarySwatch: Colors.amber,
+        primarySwatch: Colors.indigo,
         textTheme: GoogleFonts.openSansTextTheme(),
         useMaterial3: true,
       ),
