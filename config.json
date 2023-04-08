@@ -1,9 +1,10 @@
 {
     "openai_key": "",
     "modules": [
-        "main_navigation",
-        "home",
-        "history",
-        "scanner"
+        "student/st_main_navigation",
+        "student/st_home",
+        "student/st_history",
+        "student/st_scanner",
+        "admin/adm_main_navigation"
     ]
 }

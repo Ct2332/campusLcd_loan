@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:lcd_loan/core.dart';
-import '../controller/scanner_controller.dart';
+import '../controller/st_scanner_controller.dart';
 
-class ScannerView extends StatefulWidget {
-  const ScannerView({Key? key}) : super(key: key);
+class StScannerView extends StatefulWidget {
+  const StScannerView({Key? key}) : super(key: key);
 
-  Widget build(context, ScannerController controller) {
+  Widget build(context, StScannerController controller) {
     controller.view = this;
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Scanner"),
+        title: const Text("StScanner"),
         actions: const [],
       ),
       body: SingleChildScrollView(
@@ -25,5 +25,5 @@ class ScannerView extends StatefulWidget {
   }
 
   @override
-  State<ScannerView> createState() => ScannerController();
+  State<StScannerView> createState() => StScannerController();
 }

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lcd_loan/state_util.dart';
-import '../view/home_view.dart';
+import '../view/st_history_view.dart';
 
-class HomeController extends State<HomeView> implements MvcController {
-  static late HomeController instance;
-  late HomeView view;
+class StHistoryController extends State<StHistoryView> implements MvcController {
+  static late StHistoryController instance;
+  late StHistoryView view;
 
   @override
   void initState() {

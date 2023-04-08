@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:lcd_loan/core.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
-import '../controller/main_navigation_controller.dart';
+import '../controller/st_main_navigation_controller.dart';
 
-class MainNavigationView extends StatefulWidget {
-  const MainNavigationView({Key? key}) : super(key: key);
+class StMainNavigationView extends StatefulWidget {
+  const StMainNavigationView({Key? key}) : super(key: key);
 
-  Widget build(context, MainNavigationController controller) {
+  Widget build(context, StMainNavigationController controller) {
     controller.view = this;
 
     return Scaffold(
@@ -15,7 +15,9 @@ class MainNavigationView extends StatefulWidget {
         controller: controller.navController,
         onItemSelected: (index) => controller.updateIndex(index: index),
         screens: controller.buildScreens(),
+        confineInSafeArea: true,
         items: controller.navBarsItems(),
+
         backgroundColor:
             Colors.white, // Default is Colors.white.// Default is true.
         resizeToAvoidBottomInset:
@@ -48,5 +50,5 @@ class MainNavigationView extends StatefulWidget {
   }
 
   @override
-  State<MainNavigationView> createState() => MainNavigationController();
+  State<StMainNavigationView> createState() => StMainNavigationController();
 }

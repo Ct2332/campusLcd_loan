@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:lcd_loan/core.dart';
-import '../controller/home_controller.dart';
+import '../controller/adm_main_navigation_controller.dart';
 
-class HomeView extends StatefulWidget {
-  const HomeView({Key? key}) : super(key: key);
+class AdmMainNavigationView extends StatefulWidget {
+  const AdmMainNavigationView({Key? key}) : super(key: key);
 
-  Widget build(context, HomeController controller) {
+  Widget build(context, AdmMainNavigationController controller) {
     controller.view = this;
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Home"),
+        title: const Text("AdmMainNavigation"),
         actions: const [],
       ),
       body: SingleChildScrollView(
@@ -25,5 +25,5 @@ class HomeView extends StatefulWidget {
   }
 
   @override
-  State<HomeView> createState() => HomeController();
+  State<AdmMainNavigationView> createState() => AdmMainNavigationController();
 }

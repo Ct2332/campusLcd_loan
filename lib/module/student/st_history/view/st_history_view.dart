@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:lcd_loan/core.dart';
-import '../controller/history_controller.dart';
+import '../controller/st_history_controller.dart';
 
-class HistoryView extends StatefulWidget {
-  const HistoryView({Key? key}) : super(key: key);
+class StHistoryView extends StatefulWidget {
+  const StHistoryView({Key? key}) : super(key: key);
 
-  Widget build(context, HistoryController controller) {
+  Widget build(context, StHistoryController controller) {
     controller.view = this;
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("History"),
+        title: const Text("StHistory"),
         actions: const [],
       ),
       body: SingleChildScrollView(
@@ -25,5 +25,5 @@ class HistoryView extends StatefulWidget {
   }
 
   @override
-  State<HistoryView> createState() => HistoryController();
+  State<StHistoryView> createState() => StHistoryController();
 }

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lcd_loan/state_util.dart';
-import '../view/scanner_view.dart';
+import '../view/adm_main_navigation_view.dart';
 
-class ScannerController extends State<ScannerView> implements MvcController {
-  static late ScannerController instance;
-  late ScannerView view;
+class AdmMainNavigationController extends State<AdmMainNavigationView> implements MvcController {
+  static late AdmMainNavigationController instance;
+  late AdmMainNavigationView view;
 
   @override
   void initState() {
