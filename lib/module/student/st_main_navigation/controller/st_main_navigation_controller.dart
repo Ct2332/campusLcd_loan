@@ -36,7 +36,6 @@ class StMainNavigationController extends State<StMainNavigationView>
 
   List<Widget> widgetOptions = const [
     StHomeView(),
-    StScannerView(),
     StHistoryView(),
   ];
 

@@ -14,6 +14,7 @@ class StScannerController extends State<StScannerView>
   @override
   void initState() {
     instance = this;
+    log("QR Code Scan Page");
     super.initState();
   }
 
@@ -51,6 +52,7 @@ class StScannerController extends State<StScannerView>
     });
   }
 
+  //ask camera permission
   void onPermissionSet(BuildContext context, QRViewController ctrl, bool p) {
     log('${DateTime.now().toIso8601String()}_onPermissionSet $p');
     if (!p) {
@@ -60,16 +62,23 @@ class StScannerController extends State<StScannerView>
     }
   }
 
+  bool isLightOn = false;
+
+  //Turn on Flash Light
   toggleFlash() async {
     await qrController?.toggleFlash();
+    isLightOn = !isLightOn;
     setState(() {});
+    log("Flash Light Status : $isLightOn");
   }
 
+  //Flip the camera
   flipCamera() async {
     await qrController?.flipCamera();
     setState(() {});
   }
 
+  //pause camera scanner
   pauseCamera() async {
     await qrController?.pauseCamera();
     // setState(() {});
