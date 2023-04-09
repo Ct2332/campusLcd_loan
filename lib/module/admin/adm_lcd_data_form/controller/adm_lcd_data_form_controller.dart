@@ -51,31 +51,20 @@ class AdmLcdDataFormController extends State<AdmLcdDataFormView>
         docId: docId!,
       );
       log("Edit Data");
-      lcdData = {
-        "lcd_id": lcdId,
-        "lcd_name": lcdName,
-      };
-      qrCodeData = lcdData.toString();
-      log("Lcd Data = $qrCodeData");
-      Get.back();
+    } else {
+      //else await add new data
+      await LcdService.addData(
+        lcdId: lcdId!,
+        lcdName: lcdName!,
+      );
+      log("New Data Added");
     }
-    //else await add new data
-    await LcdService.addData(
-      lcdId: lcdId!,
-      lcdName: lcdName!,
-    );
-    log("New Data Added");
-
     lcdData = {
       "lcd_id": lcdId,
       "lcd_name": lcdName,
     };
     qrCodeData = lcdData.toString();
     log("Lcd Data = $qrCodeData");
-
-    setState(() {});
-
-    //show dialog data saved
     Get.back();
   }
 

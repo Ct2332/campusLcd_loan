@@ -16,7 +16,7 @@ class AdmLcdDataView extends StatefulWidget {
       appBar: AppBar(
         backgroundColor: Colors.indigoAccent[100],
         title: const AppBarTitle(
-          title: "LCD Data",
+          title: "Daftar LCD",
           color: Colors.white,
         ),
         centerTitle: true,
