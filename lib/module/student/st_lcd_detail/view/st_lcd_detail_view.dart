@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:lcd_loan/core.dart';
+import 'package:lcd_loan/shared/widget/appBar_title/app_bar_title.dart';
 
 import '../controller/st_lcd_detail_controller.dart';
 
@@ -18,13 +19,7 @@ class StLcdDetailView extends StatefulWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "Lcd Detail",
-          style: GoogleFonts.openSans(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        title: const AppBarTitle(title: "LCD Detail"),
         leading: IconButton(
           onPressed: () => controller.backToScannerPage(),
           icon: const Icon(

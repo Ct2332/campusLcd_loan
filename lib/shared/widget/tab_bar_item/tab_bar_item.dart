@@ -2,9 +2,8 @@ import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lcd_loan/shared/theme/color_theme.dart';
 
-stTabBarItem({
+tabBarItem({
   required String iconUrl,
   required String title,
 }) {
