@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lcd_loan/core.dart';
+import 'package:lcd_loan/module/admin/adm_lcd_data/widget/adm_add_button.dart';
 import 'package:lcd_loan/module/admin/adm_lcd_data/widget/adm_lcd_card.dart';
 import 'package:lcd_loan/shared/widget/appBar_title/app_bar_title.dart';
 import '../controller/adm_lcd_data_controller.dart';
@@ -23,8 +24,11 @@ class AdmLcdDataView extends StatefulWidget {
         physics: const BouncingScrollPhysics(),
         itemCount: 3,
         itemBuilder: (context, snapshot) {
-          return AdmLcdCard();
+          return const AdmLcdCard();
         },
+      ),
+      floatingActionButton: AdmAddButton(
+        onTap: () => controller.lcdInputForm(),
       ),
     );
   }

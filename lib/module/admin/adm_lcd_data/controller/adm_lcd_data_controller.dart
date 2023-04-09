@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:lcd_loan/state_util.dart';
-import '../view/adm_lcd_data_view.dart';
+import 'package:lcd_loan/core.dart';
 
-class AdmLcdDataController extends State<AdmLcdDataView> implements MvcController {
+class AdmLcdDataController extends State<AdmLcdDataView>
+    implements MvcController {
   static late AdmLcdDataController instance;
   late AdmLcdDataView view;
 
@@ -17,4 +17,8 @@ class AdmLcdDataController extends State<AdmLcdDataView> implements MvcControlle
 
   @override
   Widget build(BuildContext context) => widget.build(context, this);
+
+  lcdInputForm() {
+    Get.to(const AdmLcdDataFormView());
+  }
 }

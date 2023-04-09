@@ -29,39 +29,49 @@ class AdmLcdCard extends StatelessWidget {
         ],
       ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SvgPicture.asset(
-            'assets/icons/projector.svg',
-            height: 45,
-            colorFilter: ColorFilter.mode(
-              Colors.indigoAccent[100]!,
-              BlendMode.srcIn,
-            ),
-          ),
-          const SizedBox(
-            width: 15,
-          ),
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
+          Row(
             children: [
-              Text(
-                "LCD 01",
-                style: GoogleFonts.openSans(
-                  fontSize: 15.0,
-                  fontWeight: FontWeight.w800,
+              SvgPicture.asset(
+                'assets/icons/projector.svg',
+                height: 40,
+                colorFilter: ColorFilter.mode(
+                  Colors.indigoAccent[100]!,
+                  BlendMode.srcIn,
                 ),
               ),
-              Text(
-                "Id : 12312312312",
-                style: GoogleFonts.openSans(
-                  fontSize: 15.0,
-                  color: Colors.grey,
-                  fontStyle: FontStyle.italic,
-                  fontWeight: FontWeight.w600,
-                ),
+              const SizedBox(
+                width: 20,
+              ),
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "LCD 01",
+                    style: GoogleFonts.openSans(
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                  Text(
+                    "Id : 12312312312",
+                    style: GoogleFonts.openSans(
+                      fontSize: 13.5,
+                      color: Colors.grey,
+                      fontStyle: FontStyle.italic,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
               ),
             ],
+          ),
+          const Icon(
+            Icons.arrow_forward_ios_rounded,
+            color: Colors.grey,
+            size: 20,
           ),
         ],
       ),
