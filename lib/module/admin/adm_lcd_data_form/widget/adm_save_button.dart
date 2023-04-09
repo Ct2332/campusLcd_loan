@@ -11,15 +11,19 @@ class AdmSaveButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FloatingActionButton(
-      backgroundColor: Colors.indigoAccent[100],
-      onPressed: onTap,
-      child: Text(
-        "Save",
-        style: GoogleFonts.openSans(
-          fontSize: 15.0,
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
+    return SizedBox(
+      height: 40,
+      width: 80,
+      child: FloatingActionButton(
+        backgroundColor: Colors.indigoAccent[100],
+        onPressed: onTap,
+        child: Text(
+          "Save",
+          style: GoogleFonts.openSans(
+            fontSize: 15.0,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );

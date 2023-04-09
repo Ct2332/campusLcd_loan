@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:lcd_loan/core.dart';
 import 'package:lcd_loan/module/admin/adm_lcd_data/widget/adm_add_button.dart';
@@ -20,11 +21,32 @@ class AdmLcdDataView extends StatefulWidget {
         ),
         centerTitle: true,
       ),
-      body: ListView.builder(
-        physics: const BouncingScrollPhysics(),
-        itemCount: 3,
-        itemBuilder: (context, snapshot) {
-          return const AdmLcdCard();
+      body: StreamBuilder(
+        stream: FirebaseFirestore.instance
+            .collection("data_lcd")
+            .orderBy('lcd_name')
+            .snapshots(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return const Text('Loading...');
+          }
+
+          final data = snapshot.data!;
+          return ListView.builder(
+            physics: const BouncingScrollPhysics(),
+            itemCount: data.docs.length,
+            itemBuilder: (context, index) {
+              final item = data.docs[index].data();
+              item["id"] = data.docs[index].id;
+              String lcdId = item["lcd_id"];
+              String lcdName = item["lcd_name"];
+              return AdmLcdCard(
+                lcdId: lcdId,
+                lcdName: lcdName,
+                onTap: () => controller.lcdEditForm(item: item),
+              );
+            },
+          );
         },
       ),
       floatingActionButton: AdmAddButton(

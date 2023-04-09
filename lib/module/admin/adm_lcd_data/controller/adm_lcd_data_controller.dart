@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:lcd_loan/core.dart';
 
@@ -9,6 +11,7 @@ class AdmLcdDataController extends State<AdmLcdDataView>
   @override
   void initState() {
     instance = this;
+    log("Lcd List Page");
     super.initState();
   }
 
@@ -18,7 +21,19 @@ class AdmLcdDataController extends State<AdmLcdDataView>
   @override
   Widget build(BuildContext context) => widget.build(context, this);
 
+  //add data
   lcdInputForm() {
+    log("Navigate to Lcd Input Form");
     Get.to(const AdmLcdDataFormView());
+  }
+
+  //edit data
+  lcdEditForm({required Map item}) {
+    log("Navigate to Lcd Edit Form");
+    Get.to(
+      AdmLcdDataFormView(
+        item: item,
+      ),
+    );
   }
 }

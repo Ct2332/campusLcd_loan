@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:lcd_loan/module/admin/adm_lcd_data_form/widget/adm_delete_button.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import 'package:lcd_loan/core.dart';
@@ -25,6 +26,13 @@ class AdmLcdDataFormView extends StatefulWidget {
         title: controller.isEditMode
             ? const AppBarTitle(title: 'Edit Data')
             : const AppBarTitle(title: 'Add Data'),
+        actions: [
+          controller.isEditMode
+              ? AdmDeleteButton(
+                  onTap: () {},
+                )
+              : const SizedBox(),
+        ],
       ),
       body: Column(
         children: [

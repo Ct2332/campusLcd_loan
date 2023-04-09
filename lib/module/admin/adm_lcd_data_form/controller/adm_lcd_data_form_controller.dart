@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:lcd_loan/services/lcd_services/lcd_service.dart';
 import 'package:lcd_loan/state_util.dart';
 import '../view/adm_lcd_data_form_view.dart';
 
@@ -15,6 +16,11 @@ class AdmLcdDataFormController extends State<AdmLcdDataFormView>
     if (isEditMode) {
       lcdId = widget.item!["lcd_id"];
       lcdName = widget.item!["lcd_name"];
+      lcdData = {
+        "lcd_id": lcdId,
+        "lcd_name": lcdName,
+      };
+      qrCodeData = lcdData.toString();
     }
     super.initState();
   }
@@ -32,21 +38,27 @@ class AdmLcdDataFormController extends State<AdmLcdDataFormView>
   String? lcdId;
   String? lcdName;
 
+  Map? lcdData;
   String qrCodeData = 'data';
 
   doSaveData() async {
     if (isEditMode) {
       //await Save Edited Data
     }
-    Map<String, dynamic> lcdData = {
+    //else await add new data
+    LcdService.addData(
+      lcdId: lcdId!,
+      lcdName: lcdName!,
+    );
+
+    lcdData = {
       "lcd_id": lcdId,
       "lcd_name": lcdName,
     };
-
     qrCodeData = lcdData.toString();
-    setState(() {});
     log("Lcd Data = $qrCodeData");
-    //else await add new data
+
+    setState(() {});
 
     //show dialog data saved
     // Get.back();
