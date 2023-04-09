@@ -2,9 +2,8 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:lcd_loan/state_util.dart';
+import 'package:lcd_loan/core.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
-import '../view/st_scanner_view.dart';
 
 class StScannerController extends State<StScannerView>
     implements MvcController {
@@ -43,13 +42,27 @@ class StScannerController extends State<StScannerView>
     }
   }
 
+  String? scannedData;
+  bool isButtonEnabled = false;
+
   void onQRViewCreated(QRViewController qrController) {
     this.qrController = qrController;
     qrController.scannedDataStream.listen((scanData) {
       setState(() {
         result = scanData;
+        isButtonEnabled = true;
+        scannedData = scanData.code;
       });
     });
+  }
+
+  void scanQrCode() {
+    log("Scanning......");
+    //navigate to LCD detail page for loan operation
+    Get.offAll(StLcdDetailView(scannedData: scannedData!));
+    // Get.to(
+    //   StLcdDetailView(scannedData: scannedData!),
+    // );
   }
 
   //ask camera permission
@@ -82,5 +95,10 @@ class StScannerController extends State<StScannerView>
   pauseCamera() async {
     await qrController?.pauseCamera();
     // setState(() {});
+  }
+
+  backToHomePage() {
+    log("Back to Home Page");
+    Get.offAll(const StMainNavigationView());
   }
 }

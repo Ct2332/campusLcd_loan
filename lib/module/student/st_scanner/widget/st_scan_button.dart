@@ -11,13 +11,19 @@ class StScanButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FilledButton(
-      onPressed: onTap,
-      child: Text(
-        "Scan Code",
-        style: GoogleFonts.openSans(
-          fontSize: 15,
-          fontWeight: FontWeight.bold,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 40),
+      child: FilledButton(
+        onPressed: onTap,
+        style: FilledButton.styleFrom(
+          backgroundColor: Colors.indigo,
+        ),
+        child: Text(
+          "Scan Code",
+          style: GoogleFonts.openSans(
+            fontSize: 15,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );

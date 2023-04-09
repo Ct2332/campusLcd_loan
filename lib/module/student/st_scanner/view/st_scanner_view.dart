@@ -1,11 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lcd_loan/core.dart';
-import 'package:lcd_loan/module/student/st_scanner/widget/st_build_qr_view.dart';
-import 'package:lcd_loan/module/student/st_scanner/widget/st_light_on.dart';
-import 'package:lcd_loan/module/student/st_scanner/widget/st_scan_button.dart';
-import '../controller/st_scanner_controller.dart';
 
 class StScannerView extends StatefulWidget {
   const StScannerView({Key? key}) : super(key: key);
@@ -22,6 +17,12 @@ class StScannerView extends StatefulWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
+        leading: IconButton(
+          onPressed: () => controller.backToHomePage(),
+          icon: const Icon(
+            Icons.arrow_back,
+          ),
+        ),
         actions: [
           StLightOn(
             onTap: () => controller.toggleFlash(),
@@ -29,28 +30,19 @@ class StScannerView extends StatefulWidget {
           ),
         ],
       ),
-      body: Column(
-        children: <Widget>[
-          const Expanded(
-            flex: 4,
-            child: StBuildQrView(),
-          ),
-          Expanded(
-            flex: 1,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                controller.result != null
-                    ? Text(
-                        'Barcode Type: ${describeEnum(controller.result!.format)}   Data: ${controller.result!.code}',
-                      )
-                    : const Text('Scan a code'),
-                StScanButton(
-                  onTap: () {},
-                ),
-              ],
+      body: Stack(
+        children: [
+          const StBuildQrView(),
+          Positioned(
+            bottom: 20,
+            left: 0,
+            right: 0,
+            child: StScanButton(
+              onTap: controller.isButtonEnabled
+                  ? () => controller.scanQrCode()
+                  : null,
             ),
-          )
+          ),
         ],
       ),
     );

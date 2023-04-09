@@ -5,6 +5,7 @@
         "student/st_home",
         "student/st_history",
         "student/st_scanner",
+        "student/st_lcd_detail",
         "admin/adm_main_navigation"
     ]
 }
