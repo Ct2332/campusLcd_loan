@@ -11,4 +11,21 @@ class LcdService {
       "status": "Tersedia",
     });
   }
+
+  static updateData({
+    required String lcdId,
+    required String lcdName,
+    required String docId,
+  }) async {
+    await FirebaseFirestore.instance.collection("data_lcd").doc(docId).update({
+      "lcd_id": lcdId,
+      "lcd_name": lcdName,
+    });
+  }
+
+  static deleteData({
+    required String docId,
+  }) async {
+    await FirebaseFirestore.instance.collection("data_lcd").doc(docId).delete();
+  }
 }

@@ -28,9 +28,7 @@ class AdmLcdDataFormView extends StatefulWidget {
             : const AppBarTitle(title: 'Add Data'),
         actions: [
           controller.isEditMode
-              ? AdmDeleteButton(
-                  onTap: () {},
-                )
+              ? AdmDeleteButton(onTap: () => controller.deleteData())
               : const SizedBox(),
         ],
       ),

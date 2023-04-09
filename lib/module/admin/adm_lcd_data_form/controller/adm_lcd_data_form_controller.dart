@@ -14,6 +14,7 @@ class AdmLcdDataFormController extends State<AdmLcdDataFormView>
   void initState() {
     instance = this;
     if (isEditMode) {
+      docId = widget.item!["id"];
       lcdId = widget.item!["lcd_id"];
       lcdName = widget.item!["lcd_name"];
       lcdData = {
@@ -35,6 +36,7 @@ class AdmLcdDataFormController extends State<AdmLcdDataFormView>
     return widget.item != null;
   }
 
+  String? docId;
   String? lcdId;
   String? lcdName;
 
@@ -43,13 +45,26 @@ class AdmLcdDataFormController extends State<AdmLcdDataFormView>
 
   doSaveData() async {
     if (isEditMode) {
-      //await Save Edited Data
+      await LcdService.updateData(
+        lcdId: lcdId!,
+        lcdName: lcdName!,
+        docId: docId!,
+      );
+      log("Edit Data");
+      lcdData = {
+        "lcd_id": lcdId,
+        "lcd_name": lcdName,
+      };
+      qrCodeData = lcdData.toString();
+      log("Lcd Data = $qrCodeData");
+      Get.back();
     }
     //else await add new data
-    LcdService.addData(
+    await LcdService.addData(
       lcdId: lcdId!,
       lcdName: lcdName!,
     );
+    log("New Data Added");
 
     lcdData = {
       "lcd_id": lcdId,
@@ -61,6 +76,12 @@ class AdmLcdDataFormController extends State<AdmLcdDataFormView>
     setState(() {});
 
     //show dialog data saved
-    // Get.back();
+    Get.back();
+  }
+
+  deleteData() async {
+    await LcdService.deleteData(docId: docId!);
+    log("Data Deleted....\nNavigate Back");
+    Get.back();
   }
 }
