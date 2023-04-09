@@ -42,6 +42,9 @@ dependencies:
   flashy_tab_bar2: ^0.0.6
   cached_network_image: ^3.2.3
   uuid: ^3.0.7
+  firebase_core: ^2.9.0
+  firebase_auth: ^4.4.0
+  cloud_firestore: ^4.5.0
 
 dev_dependencies:
   flutter_test:
