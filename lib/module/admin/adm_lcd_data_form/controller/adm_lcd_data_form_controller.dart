@@ -17,9 +17,19 @@ class AdmLcdDataFormController extends State<AdmLcdDataFormView>
       docId = widget.item!["id"];
       lcdId = widget.item!["lcd_id"];
       lcdName = widget.item!["lcd_name"];
+      lcdBrand = widget.item!["brand"];
+      resolution = widget.item!["resolution"];
+      weight = widget.item!["weight"];
+      port = widget.item!["port"];
+      status = widget.item!["status"];
       lcdData = {
         "lcd_id": lcdId,
         "lcd_name": lcdName,
+        "brand": lcdBrand,
+        "resolution": resolution,
+        "weight": weight,
+        "port": port,
+        "status": status,
       };
       qrCodeData = lcdData.toString();
     }
@@ -39,6 +49,11 @@ class AdmLcdDataFormController extends State<AdmLcdDataFormView>
   String? docId;
   String? lcdId;
   String? lcdName;
+  String? lcdBrand;
+  String? resolution;
+  String? weight;
+  String? port;
+  String? status;
 
   Map? lcdData;
   String qrCodeData = 'data';
@@ -46,9 +61,14 @@ class AdmLcdDataFormController extends State<AdmLcdDataFormView>
   doSaveData() async {
     if (isEditMode) {
       await LcdService.updateData(
+        docId: docId!,
         lcdId: lcdId!,
         lcdName: lcdName!,
-        docId: docId!,
+        lcdBrand: lcdBrand!,
+        resolution: resolution!,
+        weight: weight!,
+        port: port!,
+        status: status!,
       );
       log("Edit Data");
     } else {
@@ -56,12 +76,21 @@ class AdmLcdDataFormController extends State<AdmLcdDataFormView>
       await LcdService.addData(
         lcdId: lcdId!,
         lcdName: lcdName!,
+        lcdBrand: lcdBrand!,
+        resolution: resolution!,
+        weight: weight!,
+        port: port!,
       );
       log("New Data Added");
     }
     lcdData = {
       "lcd_id": lcdId,
       "lcd_name": lcdName,
+      "brand": lcdBrand,
+      "resolution": resolution,
+      "weight": weight,
+      "port": port,
+      "status": status,
     };
     qrCodeData = lcdData.toString();
     log("Lcd Data = $qrCodeData");

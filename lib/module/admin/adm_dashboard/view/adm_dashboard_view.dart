@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lcd_loan/core.dart';
-import '../controller/adm_dashboard_controller.dart';
+import 'package:lcd_loan/shared/widget/appBar_title/app_bar_title.dart';
 
 class AdmDashboardView extends StatefulWidget {
   const AdmDashboardView({Key? key}) : super(key: key);
@@ -10,15 +10,18 @@ class AdmDashboardView extends StatefulWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("AdmDashboard"),
-        actions: const [],
+        title: const AppBarTitle(title: 'Admin Dashboard'),
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            children: const [],
-          ),
+      body: SafeArea(
+        minimum: const EdgeInsets.symmetric(horizontal: 20),
+        child: ListView(
+          children: const [
+            StTopProfile(
+              title: 'Nama Admin',
+              titleContent: 'Muh. Fulan S.Kom',
+              subContent: 'NIP Admin',
+            ),
+          ],
         ),
       ),
     );

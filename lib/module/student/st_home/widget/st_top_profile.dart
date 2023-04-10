@@ -1,10 +1,20 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:lcd_loan/core.dart';
-import 'package:lcd_loan/module/student/st_home/widget/st_column_text.dart';
-import 'package:lcd_loan/state_util.dart';
 
 class StTopProfile extends StatelessWidget {
-  const StTopProfile({Key? key}) : super(key: key);
+  final String? title;
+  final String? titleContent;
+  final String? subTitle;
+  final String? subContent;
+  const StTopProfile({
+    Key? key,
+    this.title,
+    this.titleContent,
+    this.subTitle,
+    this.subContent,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,14 +48,14 @@ class StTopProfile extends StatelessWidget {
             const SizedBox(width: 10),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 StColumnText(
-                  title: 'Name',
-                  content: 'Rely Arfadillah Erlangga',
+                  title: title ?? 'Name',
+                  content: titleContent ?? 'Rely Arfadillah Erlangga',
                 ),
                 StColumnText(
-                  title: 'NIM',
-                  content: '2004411285',
+                  title: subTitle ?? 'NIM',
+                  content: subContent ?? '2004411285',
                 ),
               ],
             ),

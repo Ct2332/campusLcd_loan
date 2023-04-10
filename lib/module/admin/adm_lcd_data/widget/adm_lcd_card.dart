@@ -5,12 +5,14 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AdmLcdCard extends StatelessWidget {
   final String lcdName;
-  final String lcdId;
+  final String lcdBrand;
+  final String status;
   final void Function()? onTap;
   const AdmLcdCard({
     Key? key,
     required this.lcdName,
-    required this.lcdId,
+    required this.lcdBrand,
+    required this.status,
     this.onTap,
   }) : super(key: key);
 
@@ -59,15 +61,28 @@ class AdmLcdCard extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      lcdName,
-                      style: GoogleFonts.openSans(
-                        fontSize: 15.0,
-                        fontWeight: FontWeight.w800,
-                      ),
+                    Row(
+                      children: [
+                        Text(
+                          lcdName,
+                          style: GoogleFonts.openSans(
+                            fontSize: 15.0,
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
+                        const SizedBox(width: 5.0),
+                        CircleAvatar(
+                          radius: 4,
+                          backgroundColor: status == "Tersedia"
+                              ? Colors.greenAccent
+                              : status == "Dipakai"
+                                  ? Colors.yellowAccent
+                                  : Colors.redAccent,
+                        ),
+                      ],
                     ),
                     Text(
-                      "Id : $lcdId",
+                      lcdBrand,
                       style: GoogleFonts.openSans(
                         fontSize: 13.5,
                         color: Colors.grey,

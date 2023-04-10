@@ -41,11 +41,13 @@ class AdmLcdDataView extends StatefulWidget {
             itemBuilder: (context, index) {
               final item = data.docs[index].data();
               item["id"] = data.docs[index].id;
-              String lcdId = item["lcd_id"];
               String lcdName = item["lcd_name"];
+              String lcdBrand = item["brand"];
+              String lcdStatus = item["status"];
               return AdmLcdCard(
-                lcdId: lcdId,
+                lcdBrand: lcdBrand,
                 lcdName: lcdName,
+                status: lcdStatus,
                 onTap: () => controller.lcdEditForm(item: item),
               );
             },

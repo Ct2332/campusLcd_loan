@@ -32,11 +32,10 @@ class AdmLcdDataFormView extends StatefulWidget {
               : const SizedBox(),
         ],
       ),
-      body: Column(
+      body: ListView(
+        physics: const BouncingScrollPhysics(),
         children: [
-          const SizedBox(
-            height: 20.0,
-          ),
+          const SizedBox(height: 20.0),
           Center(
             child: QrImage(
               data: controller.qrCodeData,
@@ -49,7 +48,8 @@ class AdmLcdDataFormView extends StatefulWidget {
             child: Column(
               children: [
                 QTextField(
-                  label: "Nama Proyektor LCD",
+                  label: "Nama Proyektor",
+                  hint: 'Contoh: LCD 00',
                   validator: Validator.required,
                   suffixIcon: Icons.abc_rounded,
                   value: controller.lcdName,
@@ -57,18 +57,69 @@ class AdmLcdDataFormView extends StatefulWidget {
                     controller.lcdName = value;
                   },
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
                 QTextField(
-                  label: "ID Proyektor LCD",
+                  label: "ID Proyektor",
+                  hint: "Contoh: uncpLcd00",
                   validator: Validator.required,
-                  suffixIcon: Icons.abc_rounded,
+                  suffixIcon: Icons.confirmation_num_outlined,
                   value: controller.lcdId,
                   onChanged: (value) {
                     controller.lcdId = value;
                   },
                 ),
+                controller.isEditMode
+                    ? QTextField(
+                        label: "Status",
+                        hint: "Contoh: Tersedia / Dipakai / Rusak ",
+                        validator: Validator.required,
+                        suffixIcon: Icons.info,
+                        value: controller.status,
+                        onChanged: (value) {
+                          controller.status = value;
+                        },
+                      )
+                    : const SizedBox(),
+                QTextField(
+                  label: "Merek",
+                  hint: "Contoh: Epson Proyektor XGA EB-E500",
+                  validator: Validator.required,
+                  suffixIcon: Icons.branding_watermark,
+                  value: controller.lcdBrand,
+                  onChanged: (value) {
+                    controller.lcdBrand = value;
+                  },
+                ),
+                QTextField(
+                  label: "Resolusi",
+                  hint: "Contoh: 1024x768 Pixel, ",
+                  validator: Validator.required,
+                  suffixIcon: Icons.aspect_ratio,
+                  value: controller.resolution,
+                  onChanged: (value) {
+                    controller.resolution = value;
+                  },
+                ),
+                QTextField(
+                  label: "Berat",
+                  hint: "Contoh: 2.4kg",
+                  validator: Validator.required,
+                  suffixIcon: Icons.equalizer,
+                  value: controller.weight,
+                  onChanged: (value) {
+                    controller.weight = value;
+                  },
+                ),
+                QTextField(
+                  label: "Port",
+                  hint: "Contoh: HDMI, VGA",
+                  validator: Validator.required,
+                  suffixIcon: Icons.usb_rounded,
+                  value: controller.port,
+                  onChanged: (value) {
+                    controller.port = value;
+                  },
+                ),
+                const SizedBox(height: 45),
               ],
             ),
           ),

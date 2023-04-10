@@ -70,34 +70,37 @@ class _QTextFieldState extends State<QTextField> implements InputControlState {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      enabled: widget.enabled,
-      controller: textEditingController,
-      focusNode: focusNode,
-      validator: widget.validator,
-      maxLength: widget.maxLength,
-      obscureText: widget.obscure,
-      decoration: InputDecoration(
-        labelText: widget.label,
-        labelStyle: const TextStyle(
-          color: Colors.blueGrey,
-        ),
-        enabledBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: TextFormField(
+        enabled: widget.enabled,
+        controller: textEditingController,
+        focusNode: focusNode,
+        validator: widget.validator,
+        maxLength: widget.maxLength,
+        obscureText: widget.obscure,
+        decoration: InputDecoration(
+          labelText: widget.label,
+          labelStyle: const TextStyle(
             color: Colors.blueGrey,
           ),
+          enabledBorder: const UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.blueGrey,
+            ),
+          ),
+          suffixIcon: Icon(
+            widget.suffixIcon ?? Icons.text_format,
+          ),
+          helperText: widget.hint,
         ),
-        suffixIcon: Icon(
-          widget.suffixIcon ?? Icons.text_format,
-        ),
-        helperText: widget.hint,
+        onChanged: (value) {
+          widget.onChanged(value);
+        },
+        onFieldSubmitted: (value) {
+          if (widget.onSubmitted != null) widget.onSubmitted!(value);
+        },
       ),
-      onChanged: (value) {
-        widget.onChanged(value);
-      },
-      onFieldSubmitted: (value) {
-        if (widget.onSubmitted != null) widget.onSubmitted!(value);
-      },
     );
   }
 }
