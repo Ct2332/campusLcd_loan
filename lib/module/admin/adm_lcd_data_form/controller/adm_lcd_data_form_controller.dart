@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -22,16 +23,8 @@ class AdmLcdDataFormController extends State<AdmLcdDataFormView>
       weight = widget.item!["weight"];
       port = widget.item!["port"];
       status = widget.item!["status"];
-      lcdData = {
-        "lcd_id": lcdId,
-        "lcd_name": lcdName,
-        "brand": lcdBrand,
-        "resolution": resolution,
-        "weight": weight,
-        "port": port,
-        "status": status,
-      };
-      qrCodeData = lcdData.toString();
+
+      qrCodeData = widget.item!["lcd_id"];
     }
     super.initState();
   }
@@ -55,7 +48,6 @@ class AdmLcdDataFormController extends State<AdmLcdDataFormView>
   String? port;
   String? status;
 
-  Map? lcdData;
   String qrCodeData = 'data';
 
   doSaveData() async {
@@ -83,16 +75,8 @@ class AdmLcdDataFormController extends State<AdmLcdDataFormView>
       );
       log("New Data Added");
     }
-    lcdData = {
-      "lcd_id": lcdId,
-      "lcd_name": lcdName,
-      "brand": lcdBrand,
-      "resolution": resolution,
-      "weight": weight,
-      "port": port,
-      "status": status,
-    };
-    qrCodeData = lcdData.toString();
+    //Assigned lcdid to be a qr image
+    qrCodeData = lcdId!;
     log("Lcd Data = $qrCodeData");
     Get.back();
   }

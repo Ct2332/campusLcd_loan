@@ -1,8 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:lcd_loan/core.dart';
+import 'package:lcd_loan/module/student/st_lcd_detail/widget/st_lcd_detail_card.dart';
 import 'package:lcd_loan/shared/widget/appBar_title/app_bar_title.dart';
 
 import '../controller/st_lcd_detail_controller.dart';
@@ -27,14 +28,33 @@ class StLcdDetailView extends StatefulWidget {
           ),
         ),
       ),
-      body: Center(
-        child: Text(
-          scannedData,
-          style: const TextStyle(
-            fontSize: 15.0,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+      body: StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance
+            .collection('data_lcd')
+            .where('lcd_id', isEqualTo: scannedData)
+            .snapshots(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (!snapshot.hasData) {
+            return const Center(child: Text('No data available'));
+          }
+
+          final doc = snapshot.data!.docs.first;
+          final lcdName = doc['lcd_name'] as String?;
+          final lcdBrand = doc['brand'] as String?;
+          final resolution = doc['resolution'] as String?;
+          final weight = doc['weight'] as String?;
+          final port = doc['port'] as String?;
+
+          return StLcdDetailCard(
+            lcdName: lcdName!,
+            brand: lcdBrand!,
+            resolution: resolution!,
+            weight: weight!,
+            port: port!,
+          );
+        },
       ),
     );
   }

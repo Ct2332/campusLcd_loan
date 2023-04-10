@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -11,6 +12,7 @@ class StLcdDetailController extends State<StLcdDetailView>
   @override
   void initState() {
     instance = this;
+    log("Data = ${widget.scannedData}");
     super.initState();
   }
 

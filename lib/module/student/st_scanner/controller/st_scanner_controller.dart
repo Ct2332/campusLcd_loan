@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
@@ -50,6 +51,7 @@ class StScannerController extends State<StScannerView>
     qrController.scannedDataStream.listen((scanData) {
       setState(() {
         result = scanData;
+        log("Scanned Data: ${scanData.code}");
         isButtonEnabled = true;
         scannedData = scanData.code;
       });
