@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lcd_loan/core.dart';
-import 'package:lcd_loan/module/student/st_home/widget/st_scanner_button.dart';
-import 'package:lcd_loan/module/student/st_home/widget/st_top_profile.dart';
-import '../controller/st_home_controller.dart';
 
 class StHomeView extends StatefulWidget {
   const StHomeView({Key? key}) : super(key: key);
@@ -19,8 +15,18 @@ class StHomeView extends StatefulWidget {
           right: 20,
         ),
         child: ListView(
-          children: const [
-            StTopProfile(),
+          children: [
+            const StTopProfile(),
+            FilledButton(
+              onPressed: () => controller.doLogOut(),
+              child: const Text(
+                "LogOut",
+                style: TextStyle(
+                  fontSize: 15.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            )
           ],
         ),
       ),

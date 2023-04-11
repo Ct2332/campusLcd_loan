@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lcd_loan/core.dart';
-import 'package:lcd_loan/module/auth/login/controller/login_controller.dart';
-import 'package:lcd_loan/module/auth/register/widget/at_account_confirmation.dart';
-import 'package:lcd_loan/module/auth/register/widget/at_registration_button.dart';
-import 'package:lcd_loan/module/auth/register/widget/at_text_field.dart';
-import 'package:lcd_loan/module/auth/register/widget/at_title.dart';
 
 class AtLoginContent extends StatelessWidget {
   const AtLoginContent({Key? key}) : super(key: key);

@@ -16,14 +16,14 @@ class AtTitle extends StatelessWidget {
     return Column(
       children: [
         Text(
-          title ?? "Registration",
+          title ?? "Registrasi",
           style: GoogleFonts.openSans(
             fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
         ),
         Text(
-          content ?? "Please register down below",
+          content ?? "Daftarkan diri anda",
           style: GoogleFonts.openSans(
             fontSize: 13,
             color: Colors.grey,

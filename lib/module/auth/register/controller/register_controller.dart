@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lcd_loan/core.dart';
 
 class RegisterController extends State<RegisterView> implements MvcController {
@@ -27,14 +28,52 @@ class RegisterController extends State<RegisterView> implements MvcController {
   String? password;
 
   //function for register user
-  doRegister() {
-    log('FullName: $fullName');
-    log('NIM: $nim');
-    log('Email: $email');
-    log('Password: $password');
+  doRegister() async {
+    if (fullName?.isEmpty ?? true) {
+      showSnackbarMessage('Masukkkan nama lengkap anda');
+      return;
+    }
+
+    if (nim?.isEmpty ?? true) {
+      showSnackbarMessage('Masukkan NIM anda');
+      return;
+    }
+
+    if (email?.isEmpty ?? true) {
+      showSnackbarMessage('Masukkkan Email yang benar');
+      return;
+    }
+
+    if (password == null || password!.length < 6) {
+      showSnackbarMessage('Kata Sandi minimal 6 karakter');
+      return;
+    }
+
+    try {
+      log("Register New User");
+      await AuthService.createNewUser(
+        email: email!,
+        password: password!,
+      );
+      Get.to(const EmailVerificationView());
+    } catch (e) {
+      showSnackbarMessage(e.toString());
+    }
   }
 
   toLoginView() {
     Get.offAll(const LoginView());
+  }
+
+  void showSnackbarMessage(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: Colors.redAccent,
+        content: Text(
+          message,
+          style: GoogleFonts.openSans(fontWeight: FontWeight.w500),
+        ),
+      ),
+    );
   }
 }

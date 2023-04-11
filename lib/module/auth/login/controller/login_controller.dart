@@ -1,6 +1,8 @@
 import 'dart:developer';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lcd_loan/core.dart';
 
 class LoginController extends State<LoginView> implements MvcController {
@@ -29,9 +31,40 @@ class LoginController extends State<LoginView> implements MvcController {
   doLogin() async {
     log("Email: $email");
     log("Password: $password");
+
+    log("Try to Login....");
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email!,
+        password: password!,
+      );
+      Get.offAll(const StMainNavigationView());
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        showSnackbarMessage('Pengguna tidak ditemukan');
+      } else if (e.code == 'invalid-email') {
+        showSnackbarMessage('Email tidak terdaftar');
+      } else if (e.code == 'wrong-password') {
+        showSnackbarMessage("Password anda salah");
+      } else if (e.code == 'ERROR_ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL') {
+        showSnackbarMessage("Email belum diverifikasi");
+      }
+    }
   }
 
   toRegisterView() {
     Get.offAll(const RegisterView());
+  }
+
+  void showSnackbarMessage(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: Colors.redAccent,
+        content: Text(
+          message,
+          style: GoogleFonts.openSans(fontWeight: FontWeight.w500),
+        ),
+      ),
+    );
   }
 }
