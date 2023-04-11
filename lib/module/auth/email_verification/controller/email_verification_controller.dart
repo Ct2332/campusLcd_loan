@@ -45,9 +45,8 @@ class EmailVerificationController extends State<EmailVerificationView>
 
   Future checkEmailVerified() async {
     await currentUser!.reload();
-    setState(() {
-      isEmailVerified = currentUser!.emailVerified;
-    });
+    isEmailVerified = currentUser!.emailVerified;
+    setState(() {});
 
     if (isEmailVerified) {
       log("Email Verified = $isEmailVerified");
@@ -59,8 +58,9 @@ class EmailVerificationController extends State<EmailVerificationView>
   Future resendEmailVerification() async {
     try {
       log("Sending Email Verification");
-
-      await currentUser!.sendEmailVerification();
+      if (currentUser != null) {
+        await currentUser!.sendEmailVerification();
+      }
     } on Exception catch (e) {
       showSnackbarMessage(e.toString());
     }

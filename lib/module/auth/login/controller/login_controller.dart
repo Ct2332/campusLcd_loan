@@ -13,7 +13,7 @@ class LoginController extends State<LoginView> implements MvcController {
   void initState() {
     instance = this;
     log("Login Page");
-
+    log("Current User = ${currentUser?.email}");
     super.initState();
   }
 
@@ -22,6 +22,8 @@ class LoginController extends State<LoginView> implements MvcController {
 
   @override
   Widget build(BuildContext context) => widget.build(context, this);
+
+  final currentUser = FirebaseAuth.instance.currentUser;
 
   //login textfield variable
   String? email;
@@ -38,7 +40,14 @@ class LoginController extends State<LoginView> implements MvcController {
         email: email!,
         password: password!,
       );
+      if (!currentUser!.emailVerified) {
+        showSnackbarMessage("Email belum diverifikasi");
+      }
       Get.offAll(const StMainNavigationView());
+
+      // else if (currentUser == null) {
+      //   showSnackbarMessage("User Null");
+      // }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         showSnackbarMessage('Pengguna tidak ditemukan');
@@ -46,8 +55,6 @@ class LoginController extends State<LoginView> implements MvcController {
         showSnackbarMessage('Email tidak terdaftar');
       } else if (e.code == 'wrong-password') {
         showSnackbarMessage("Password anda salah");
-      } else if (e.code == 'ERROR_ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL') {
-        showSnackbarMessage("Email belum diverifikasi");
       }
     }
   }
