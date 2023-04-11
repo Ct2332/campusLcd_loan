@@ -19,7 +19,7 @@ class LcdDetailTopContent extends StatelessWidget {
             'assets/icons/projector.svg',
             height: 130,
             colorFilter: const ColorFilter.mode(
-              Colors.indigoAccent,
+              Colors.amber,
               BlendMode.srcIn,
             ),
           ),

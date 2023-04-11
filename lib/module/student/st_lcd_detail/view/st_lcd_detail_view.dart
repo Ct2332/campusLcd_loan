@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'package:lcd_loan/core.dart';
+import 'package:lcd_loan/module/student/st_lcd_detail/widget/st_borrow_button.dart';
 import 'package:lcd_loan/module/student/st_lcd_detail/widget/st_lcd_detail_card.dart';
 import 'package:lcd_loan/shared/widget/appBar_title/app_bar_title.dart';
 
@@ -55,6 +56,9 @@ class StLcdDetailView extends StatefulWidget {
             port: port!,
           );
         },
+      ),
+      floatingActionButton: StBorrowButton(
+        onTap: () {},
       ),
     );
   }

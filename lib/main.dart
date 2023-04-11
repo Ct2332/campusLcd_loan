@@ -1,3 +1,4 @@
+import 'package:lcd_loan/state_util.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lcd_loan/core.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.openSansTextTheme(),
         useMaterial3: true,
       ),
-      home: const StMainNavigationView(),
+      home: const RegisterView(),
     );
   }
 }

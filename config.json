@@ -1,6 +1,8 @@
 {
     "openai_key": "",
     "modules": [
+        "auth/login",
+        "auth/register",
         "student/st_main_navigation",
         "student/st_home",
         "student/st_history",
