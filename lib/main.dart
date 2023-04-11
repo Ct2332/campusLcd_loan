@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.openSansTextTheme(),
         useMaterial3: true,
       ),
-      home: const RegisterView(),
+      home: const LoginView(),
     );
   }
 }

@@ -1,28 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:lcd_loan/core.dart';
-import 'package:lcd_loan/module/auth/register/widget/at_already_have_account.dart';
+import 'package:lcd_loan/module/auth/login/controller/login_controller.dart';
+import 'package:lcd_loan/module/auth/register/widget/at_account_confirmation.dart';
 import 'package:lcd_loan/module/auth/register/widget/at_registration_button.dart';
 import 'package:lcd_loan/module/auth/register/widget/at_text_field.dart';
 import 'package:lcd_loan/module/auth/register/widget/at_title.dart';
 
-class AtContent extends StatelessWidget {
-  const AtContent({Key? key}) : super(key: key);
+class AtLoginContent extends StatelessWidget {
+  const AtLoginContent({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    RegisterController controller = RegisterController.instance;
+    LoginController controller = LoginController.instance;
     return Column(
       children: [
-        const AtTitle(),
+        const AtTitle(
+          title: 'Selamat Datang',
+          content: 'Silahkan masukkan akun anda',
+        ),
         const SizedBox(height: 35),
-        const AtTextField(
-          iconUrl: 'user.svg',
-          hint: 'Nama Lengkap',
-        ),
-        const AtTextField(
-          iconUrl: 'password-check.svg',
-          hint: 'NIM',
-        ),
         const AtTextField(
           iconUrl: 'sms.svg',
           hint: 'Email',
@@ -33,11 +28,14 @@ class AtContent extends StatelessWidget {
         ),
         const SizedBox(height: 20),
         AtRegistrationButton(
-          onRegister: () {},
+          title: 'LOGIN',
+          onTap: () => controller.doLogin(),
         ),
         const SizedBox(height: 20),
-        AtAlreadyHaveAccount(
-          onTap: () => controller.toLoginView(),
+        AtAccountConfirmation(
+          content: 'Tidak punya akun? ',
+          link: 'Daftar disini',
+          onTap: () => controller.toRegisterView(),
         ),
       ],
     );

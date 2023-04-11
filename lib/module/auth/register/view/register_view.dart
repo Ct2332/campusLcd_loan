@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lcd_loan/core.dart';
-import 'package:lcd_loan/module/auth/register/widget/at_content.dart';
+import 'package:lcd_loan/module/auth/register/widget/at_register_content.dart';
 import '../controller/register_controller.dart';
 
 class RegisterView extends StatefulWidget {
@@ -21,7 +21,7 @@ class RegisterView extends StatefulWidget {
               flex: 1,
               child: SizedBox(),
             ),
-            AtContent(),
+            AtRegisterContent(),
             Expanded(
               flex: 1,
               child: SizedBox(),

@@ -2,11 +2,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class AtAlreadyHaveAccount extends StatelessWidget {
+class AtAccountConfirmation extends StatelessWidget {
   final void Function()? onTap;
-  const AtAlreadyHaveAccount({
+  final String? content;
+  final String? link;
+  const AtAccountConfirmation({
     Key? key,
     this.onTap,
+    this.content,
+    this.link,
   }) : super(key: key);
 
   @override
@@ -15,7 +19,7 @@ class AtAlreadyHaveAccount extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          "Sudah punya akun? ",
+          content ?? "Sudah punya akun? ",
           style: GoogleFonts.openSans(
             fontSize: 13.5,
           ),
@@ -23,7 +27,7 @@ class AtAlreadyHaveAccount extends StatelessWidget {
         InkWell(
           onTap: onTap,
           child: Text(
-            "Login disini",
+            link ?? "Login disini",
             style: GoogleFonts.openSans(
               fontSize: 13.5,
               color: Colors.indigo,

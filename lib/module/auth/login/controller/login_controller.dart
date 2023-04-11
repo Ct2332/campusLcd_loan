@@ -1,8 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:lcd_loan/state_util.dart';
-import '../view/login_view.dart';
+import 'package:lcd_loan/core.dart';
 
 class LoginController extends State<LoginView> implements MvcController {
   static late LoginController instance;
@@ -21,4 +20,11 @@ class LoginController extends State<LoginView> implements MvcController {
 
   @override
   Widget build(BuildContext context) => widget.build(context, this);
+
+  //execute login operation
+  doLogin() {}
+
+  toRegisterView() {
+    Get.offAll(const RegisterView());
+  }
 }

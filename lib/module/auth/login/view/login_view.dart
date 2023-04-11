@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lcd_loan/core.dart';
+import 'package:lcd_loan/module/auth/login/widget/at_login_content.dart';
 import '../controller/login_controller.dart';
 
 class LoginView extends StatefulWidget {
@@ -9,16 +10,23 @@ class LoginView extends StatefulWidget {
     controller.view = this;
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Login"),
-        actions: const [],
-      ),
-      body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            children: const [],
-          ),
+      body: SafeArea(
+        minimum: const EdgeInsets.symmetric(
+          horizontal: 25,
+          vertical: 15,
+        ),
+        child: Column(
+          children: const [
+            Expanded(
+              flex: 1,
+              child: SizedBox(),
+            ),
+            AtLoginContent(),
+            Expanded(
+              flex: 1,
+              child: SizedBox(),
+            ),
+          ],
         ),
       ),
     );

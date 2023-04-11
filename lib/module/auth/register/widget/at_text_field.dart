@@ -17,7 +17,7 @@ class AtTextField extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 15),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(11),
         color: Colors.blueGrey.withOpacity(0.06),
       ),
       child: Row(

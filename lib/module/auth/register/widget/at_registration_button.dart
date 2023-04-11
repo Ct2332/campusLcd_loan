@@ -1,11 +1,14 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AtRegistrationButton extends StatelessWidget {
-  final void Function()? onRegister;
+  final void Function()? onTap;
+  final String? title;
   const AtRegistrationButton({
     Key? key,
-    this.onRegister,
+    this.onTap,
+    this.title,
   }) : super(key: key);
 
   @override
@@ -13,16 +16,16 @@ class AtRegistrationButton extends StatelessWidget {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       child: FilledButton(
-        onPressed: onRegister,
+        onPressed: onTap,
         style: FilledButton.styleFrom(
           backgroundColor: Colors.indigo,
           shape: ContinuousRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
         ),
-        child: const Text(
-          "DAFTAR",
-          style: TextStyle(
+        child: Text(
+          title ?? "DAFTAR",
+          style: GoogleFonts.openSans(
             fontSize: 15.0,
             fontWeight: FontWeight.bold,
           ),
