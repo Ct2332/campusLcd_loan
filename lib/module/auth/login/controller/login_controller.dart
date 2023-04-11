@@ -21,8 +21,15 @@ class LoginController extends State<LoginView> implements MvcController {
   @override
   Widget build(BuildContext context) => widget.build(context, this);
 
+  //login textfield variable
+  String? email;
+  String? password;
+
   //execute login operation
-  doLogin() {}
+  doLogin() async {
+    log("Email: $email");
+    log("Password: $password");
+  }
 
   toRegisterView() {
     Get.offAll(const RegisterView());

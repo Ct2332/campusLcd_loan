@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'dart:developer';
 
 class Validator {
   static String? rule(
@@ -15,7 +15,7 @@ class Validator {
     dynamic value, {
     String? fieldName,
   }) {
-    debugPrint("vvvv: $value");
+    log("vvvv: $value");
     if (value is String || value == null) {
       if (value.toString() == "null") return "This field is required";
       if (value.isEmpty) return "This field is required";

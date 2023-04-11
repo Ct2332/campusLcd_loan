@@ -2,15 +2,71 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:uuid/uuid.dart';
 
-class AtTextField extends StatelessWidget {
+import 'package:lcd_loan/core.dart';
+
+class AtTextField extends StatefulWidget {
+  final String? id;
   final String? hint;
+  final String? value;
+  final bool obscure;
   final String iconUrl;
+  final String? Function(String?)? validator;
+  final Iterable<String>? autofillHints;
+  final TextInputType? keyboardType;
+  final Function(String) onChanged;
+  final Function(String)? onSubmitted;
   const AtTextField({
     Key? key,
+    this.id,
     this.hint,
+    this.value,
+    this.obscure = false,
     required this.iconUrl,
+    this.validator,
+    this.autofillHints,
+    this.keyboardType,
+    required this.onChanged,
+    this.onSubmitted,
   }) : super(key: key);
+
+  @override
+  State<AtTextField> createState() => _AtTextFieldState();
+}
+
+class _AtTextFieldState extends State<AtTextField>
+    implements InputControlState {
+  TextEditingController textEditingController = TextEditingController();
+
+  @override
+  void initState() {
+    textEditingController.text = widget.value ?? "";
+    Input.inputController[widget.id ?? const Uuid().v4()] = this;
+    super.initState();
+  }
+
+  @override
+  getValue() {
+    return textEditingController.text;
+  }
+
+  @override
+  setValue(value) {
+    textEditingController.text = value;
+  }
+
+  @override
+  resetValue() {
+    textEditingController.text = "";
+  }
+
+  @override
+  focus() {
+    focusNode.requestFocus();
+  }
+
+  FocusNode focusNode = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -25,16 +81,29 @@ class AtTextField extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 15, right: 5),
             child: SvgPicture.asset(
-              'assets/icons/$iconUrl',
+              'assets/icons/${widget.iconUrl}',
               height: 18,
               colorFilter:
-                  const ColorFilter.mode(Colors.black, BlendMode.srcIn),
+                  const ColorFilter.mode(Colors.black54, BlendMode.srcIn),
             ),
           ),
           Expanded(
-            child: TextField(
+            child: TextFormField(
+              // validator: ,
+              controller: textEditingController,
+              focusNode: focusNode,
+              keyboardType: widget.keyboardType,
+              autofillHints: widget.autofillHints,
+              validator: widget.validator,
+              obscureText: widget.obscure,
+              onChanged: (value) {
+                widget.onChanged(value);
+              },
+              onFieldSubmitted: (value) {
+                if (widget.onSubmitted != null) widget.onSubmitted!(value);
+              },
               decoration: InputDecoration(
-                hintText: hint ?? 'Nama Lengkap',
+                hintText: widget.hint ?? 'Nama Lengkap',
                 hintStyle: GoogleFonts.openSans(fontSize: 15),
                 contentPadding: const EdgeInsets.symmetric(horizontal: 10),
                 border: InputBorder.none,

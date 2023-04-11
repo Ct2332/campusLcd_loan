@@ -15,17 +15,12 @@ class RegisterView extends StatefulWidget {
           horizontal: 25,
           vertical: 15,
         ),
-        child: Column(
+        child: ListView(
           children: const [
-            Expanded(
-              flex: 1,
-              child: SizedBox(),
+            SizedBox(
+              height: 140,
             ),
             AtRegisterContent(),
-            Expanded(
-              flex: 1,
-              child: SizedBox(),
-            ),
           ],
         ),
       ),

@@ -20,8 +20,19 @@ class RegisterController extends State<RegisterView> implements MvcController {
   @override
   Widget build(BuildContext context) => widget.build(context, this);
 
+  //textfield input variable
+  String? fullName;
+  String? nim;
+  String? email;
+  String? password;
+
   //function for register user
-  doRegister() {}
+  doRegister() {
+    log('FullName: $fullName');
+    log('NIM: $nim');
+    log('Email: $email');
+    log('Password: $password');
+  }
 
   toLoginView() {
     Get.offAll(const LoginView());

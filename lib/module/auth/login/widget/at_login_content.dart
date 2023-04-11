@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lcd_loan/core.dart';
 import 'package:lcd_loan/module/auth/login/controller/login_controller.dart';
 import 'package:lcd_loan/module/auth/register/widget/at_account_confirmation.dart';
 import 'package:lcd_loan/module/auth/register/widget/at_registration_button.dart';
@@ -18,13 +19,23 @@ class AtLoginContent extends StatelessWidget {
           content: 'Silahkan masukkan akun anda',
         ),
         const SizedBox(height: 35),
-        const AtTextField(
+        AtTextField(
           iconUrl: 'sms.svg',
           hint: 'Email',
+          validator: Validator.required,
+          autofillHints: const [AutofillHints.email],
+          onChanged: (value) {
+            controller.email = value;
+          },
         ),
-        const AtTextField(
+        AtTextField(
           iconUrl: 'key.svg',
           hint: 'Password',
+          validator: Validator.required,
+          obscure: true,
+          onChanged: (value) {
+            controller.password = value;
+          },
         ),
         const SizedBox(height: 20),
         AtRegistrationButton(

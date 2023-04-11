@@ -15,21 +15,39 @@ class AtRegisterContent extends StatelessWidget {
       children: [
         const AtTitle(),
         const SizedBox(height: 35),
-        const AtTextField(
+        AtTextField(
           iconUrl: 'user.svg',
           hint: 'Nama Lengkap',
+          validator: Validator.required,
+          onChanged: (value) {
+            controller.fullName = value;
+          },
         ),
-        const AtTextField(
+        AtTextField(
           iconUrl: 'password-check.svg',
           hint: 'NIM',
+          validator: Validator.required,
+          onChanged: (value) {
+            controller.nim = value;
+          },
         ),
-        const AtTextField(
+        AtTextField(
           iconUrl: 'sms.svg',
           hint: 'Email',
+          validator: Validator.email,
+          autofillHints: const [AutofillHints.email],
+          onChanged: (value) {
+            controller.email = value;
+          },
         ),
-        const AtTextField(
+        AtTextField(
           iconUrl: 'key.svg',
           hint: 'Password',
+          validator: Validator.required,
+          obscure: true,
+          onChanged: (value) {
+            controller.password = value;
+          },
         ),
         const SizedBox(height: 20),
         AtRegistrationButton(
