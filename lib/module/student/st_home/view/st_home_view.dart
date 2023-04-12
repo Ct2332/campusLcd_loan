@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:lcd_loan/core.dart';
 
@@ -16,8 +17,26 @@ class StHomeView extends StatefulWidget {
         ),
         child: ListView(
           children: [
-            StTopProfile(
-              titleContent: controller.currentUser.email,
+            StreamBuilder(
+              stream: FirebaseFirestore.instance
+                  .collection('students')
+                  .where("email", isEqualTo: controller.currentUser.email)
+                  .snapshots(),
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) {
+                  return const CircularProgressIndicator();
+                }
+
+                final doc = snapshot.data!.docs.first;
+                final email = doc.get('email') as String;
+                final name = doc.get('name') as String;
+                final nim = doc.get('nim') as String;
+                final role = doc.get('role') as String;
+                return StTopProfile(
+                  titleContent: name,
+                  subContent: nim,
+                );
+              },
             ),
             FilledButton(
               onPressed: () => controller.doLogOut(),

@@ -18,6 +18,7 @@ class StTopProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    StHomeController controller = StHomeController.instance;
     return GestureDetector(
       onTap: () {
         Get.to(const StHistoryView());
