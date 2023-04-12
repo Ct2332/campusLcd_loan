@@ -55,6 +55,14 @@ class RegisterController extends State<RegisterView> implements MvcController {
         email: email!,
         password: password!,
       );
+
+      log("Save Student Data");
+      await AuthService.saveStudentData(
+        email: email!,
+        name: fullName!,
+        nim: nim!,
+      );
+
       Get.to(const EmailVerificationView());
     } catch (e) {
       showSnackbarMessage(e.toString());

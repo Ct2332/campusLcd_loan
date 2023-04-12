@@ -46,18 +46,20 @@ class StTopProfile extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 10),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                StColumnText(
-                  title: title ?? 'Name',
-                  content: titleContent ?? 'Rely Arfadillah Erlangga',
-                ),
-                StColumnText(
-                  title: subTitle ?? 'NIM',
-                  content: subContent ?? '2004411285',
-                ),
-              ],
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  StColumnText(
+                    title: title ?? 'Name',
+                    content: titleContent ?? 'Rely Arfadillah Erlangga',
+                  ),
+                  StColumnText(
+                    title: subTitle ?? 'NIM',
+                    content: subContent ?? '2004411285',
+                  ),
+                ],
+              ),
             ),
           ],
         ),

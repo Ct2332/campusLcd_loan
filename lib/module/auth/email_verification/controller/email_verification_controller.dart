@@ -19,7 +19,11 @@ class EmailVerificationController extends State<EmailVerificationView>
     instance = this;
     log("Email Verification Page");
     log("Current User: ${currentUser?.email}");
+
     isEmailVerified = currentUser!.emailVerified;
+    setState(() {});
+    log("Is Email Verified = $isEmailVerified");
+
     if (!isEmailVerified) {
       resendEmailVerification();
 
@@ -28,7 +32,6 @@ class EmailVerificationController extends State<EmailVerificationView>
         (_) => checkEmailVerified(),
       );
     }
-    log("Is Email Verified = $isEmailVerified");
     super.initState();
   }
 

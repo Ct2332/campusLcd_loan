@@ -23,7 +23,7 @@ class StColumnText extends StatelessWidget {
             style: GoogleFonts.openSans(
               fontSize: 13,
               color: Colors.black87,
-              fontWeight: FontWeight.w800,
+              fontWeight: FontWeight.bold,
             ),
           ),
           Text(
@@ -32,7 +32,7 @@ class StColumnText extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             style: GoogleFonts.openSans(
               fontSize: 14.5,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w800,
             ),
           ),
         ],

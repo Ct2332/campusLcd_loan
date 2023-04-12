@@ -1,10 +1,9 @@
 import 'dart:developer';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthService {
-  // static UserCredential? userCredential;
-
   static Future<void> createNewUser({
     required String email,
     required String password,
@@ -29,13 +28,6 @@ class AuthService {
       log(e.toString());
     }
   }
-
-  // static signInWithEmail() async {
-  //   await FirebaseAuth.instance.signInWithEmailAndPassword(
-  //     email: "user@demo.com",
-  //     password: "123456 xxx",
-  //   );
-  // }
 
   static Future<String?> signInWithEmail(String email, String password) async {
     try {
@@ -74,6 +66,30 @@ class AuthService {
     } catch (e) {
       log("An error occurred. Please try again later.");
       return "An error occurred. Please try again later.";
+    }
+  }
+
+  static Future<void> saveStudentData({
+    required String email,
+    required String name,
+    required String nim,
+  }) async {
+    try {
+      var snapshot = await FirebaseFirestore.instance
+          .collection("students")
+          .doc(nim)
+          .get();
+
+      if (!snapshot.exists) {
+        await FirebaseFirestore.instance.collection("students").doc(nim).set({
+          "email": email,
+          "name": name,
+          "nim": nim,
+          "role": "Mahasiswa",
+        });
+      }
+    } catch (e) {
+      log(e.toString());
     }
   }
 }

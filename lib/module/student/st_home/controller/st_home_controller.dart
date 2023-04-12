@@ -20,6 +20,8 @@ class StHomeController extends State<StHomeView> implements MvcController {
   @override
   Widget build(BuildContext context) => widget.build(context, this);
 
+  final currentUser = FirebaseAuth.instance.currentUser!;
+
   scanQrCode() {
     Get.to(const StScannerView());
   }

@@ -16,7 +16,9 @@ class StHomeView extends StatefulWidget {
         ),
         child: ListView(
           children: [
-            const StTopProfile(),
+            StTopProfile(
+              titleContent: controller.currentUser.email,
+            ),
             FilledButton(
               onPressed: () => controller.doLogOut(),
               child: const Text(
