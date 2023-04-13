@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:lcd_loan/core.dart';
+import 'package:lcd_loan/module/student/st_home/widget/st_top_profile_loading.dart';
 
 class StHomeView extends StatefulWidget {
   const StHomeView({Key? key}) : super(key: key);
@@ -24,7 +25,7 @@ class StHomeView extends StatefulWidget {
                   .snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
-                  return const Center(child: CircularProgressIndicator());
+                  return const StTopProfileLoading();
                 }
 
                 final doc = snapshot.data!.docs.first;
@@ -33,9 +34,12 @@ class StHomeView extends StatefulWidget {
                 final nim = doc.get('nim') as String;
                 // final role = doc.get('role') as String;
                 return StTopProfile(
-                  // imgUrl: "https://bit.ly/43wLLI7",
                   name: name,
                 );
+                // return StTopProfile(
+                //   // imgUrl: "https://bit.ly/43wLLI7",
+                //   name: name,
+                // );
               },
             ),
           ],

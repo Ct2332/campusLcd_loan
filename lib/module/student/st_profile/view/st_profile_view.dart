@@ -1,10 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:lcd_loan/core.dart';
-import 'package:lcd_loan/module/student/st_profile/widget/st_logout_button.dart';
-import 'package:lcd_loan/module/student/st_profile/widget/st_profile_detail.dart';
-import 'package:lcd_loan/module/student/st_profile/widget/st_profile_image.dart';
-import '../controller/st_profile_controller.dart';
+import 'package:lcd_loan/module/student/st_profile/widget/st_profile_view_loading.dart';
 
 class StProfileView extends StatefulWidget {
   const StProfileView({Key? key}) : super(key: key);
@@ -37,7 +34,7 @@ class StProfileView extends StatefulWidget {
                   .snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
-                  return const Center(child: CircularProgressIndicator());
+                  return const StProfileViewLoading();
                 }
 
                 final doc = snapshot.data!.docs.first;
@@ -45,6 +42,7 @@ class StProfileView extends StatefulWidget {
                 final name = doc.get('name') as String;
                 final nim = doc.get('nim') as String;
                 // final role = doc.get('role') as String;
+
                 return Expanded(
                   child: ListView(
                     children: [
