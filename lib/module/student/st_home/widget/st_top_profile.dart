@@ -2,23 +2,25 @@
 import 'package:flutter/material.dart';
 
 import 'package:lcd_loan/core.dart';
+import 'package:lcd_loan/shared/widget/cached_image/cached_image.dart';
 
 class StTopProfile extends StatelessWidget {
   final String? title;
   final String? titleContent;
   final String? subTitle;
   final String? subContent;
+  final String? imgUrl;
   const StTopProfile({
     Key? key,
     this.title,
     this.titleContent,
     this.subTitle,
     this.subContent,
+    this.imgUrl,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    StHomeController controller = StHomeController.instance;
     return GestureDetector(
       onTap: () {
         Get.to(const StHistoryView());
@@ -35,20 +37,14 @@ class StTopProfile extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Container(
-              width: 95,
-              decoration: BoxDecoration(
-                color: Colors.orange,
-                borderRadius: BorderRadius.circular(12),
-                image: const DecorationImage(
-                  image: AssetImage('assets/images/profile.jpg'),
-                  fit: BoxFit.cover,
-                ),
-              ),
+            WdCachedImage(
+              size: 95,
+              imgUrl: imgUrl,
             ),
             const SizedBox(width: 10),
             Expanded(
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   StColumnText(
