@@ -22,6 +22,8 @@ class StProfileController extends State<StProfileView>
   @override
   Widget build(BuildContext context) => widget.build(context, this);
 
+  final currentUser = FirebaseAuth.instance.currentUser!;
+
   doLogOut() async {
     try {
       log("Logging Out");

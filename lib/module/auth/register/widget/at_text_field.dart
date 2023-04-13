@@ -11,6 +11,7 @@ class AtTextField extends StatefulWidget {
   final String? hint;
   final String? value;
   final bool obscure;
+  final bool showPasswordIcon;
   final String iconUrl;
   final String? Function(String?)? validator;
   final Iterable<String>? autofillHints;
@@ -23,6 +24,7 @@ class AtTextField extends StatefulWidget {
     this.hint,
     this.value,
     this.obscure = false,
+    this.showPasswordIcon = false,
     required this.iconUrl,
     this.validator,
     this.autofillHints,
@@ -38,6 +40,8 @@ class AtTextField extends StatefulWidget {
 class _AtTextFieldState extends State<AtTextField>
     implements InputControlState {
   TextEditingController textEditingController = TextEditingController();
+
+  bool _passwordVisible = false;
 
   @override
   void initState() {
@@ -95,7 +99,7 @@ class _AtTextFieldState extends State<AtTextField>
               keyboardType: widget.keyboardType,
               autofillHints: widget.autofillHints,
               validator: widget.validator,
-              obscureText: widget.obscure,
+              obscureText: widget.obscure && !_passwordVisible,
               onChanged: (value) {
                 widget.onChanged(value);
               },
@@ -110,6 +114,24 @@ class _AtTextFieldState extends State<AtTextField>
               ),
             ),
           ),
+          if (widget.showPasswordIcon)
+            Padding(
+              padding: const EdgeInsets.only(left: 15, right: 15),
+              child: InkWell(
+                onTap: () {
+                  _passwordVisible = !_passwordVisible;
+                  setState(() {});
+                },
+                child: SvgPicture.asset(
+                  _passwordVisible
+                      ? 'assets/icons/eye.svg'
+                      : 'assets/icons/eye-slash.svg',
+                  height: 18,
+                  colorFilter:
+                      const ColorFilter.mode(Colors.black54, BlendMode.srcIn),
+                ),
+              ),
+            ),
         ],
       ),
     );

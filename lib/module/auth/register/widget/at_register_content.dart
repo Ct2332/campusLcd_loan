@@ -41,6 +41,7 @@ class AtRegisterContent extends StatelessWidget {
           hint: 'Password',
           validator: Validator.required,
           obscure: true,
+          showPasswordIcon: true,
           onChanged: (value) {
             controller.password = value;
           },

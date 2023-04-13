@@ -32,7 +32,10 @@ class StHomeView extends StatefulWidget {
                 final name = doc.get('name') as String;
                 final nim = doc.get('nim') as String;
                 // final role = doc.get('role') as String;
-                return StTopProfile();
+                return StTopProfile(
+                  // imgUrl: "https://bit.ly/43wLLI7",
+                  name: name,
+                );
               },
             ),
           ],

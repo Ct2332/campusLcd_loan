@@ -47,6 +47,11 @@ export 'package:lcd_loan/module/student/st_main_navigation/controller/st_main_na
 export 'package:lcd_loan/module/student/st_main_navigation/view/st_main_navigation_view.dart';
 export 'package:lcd_loan/module/student/st_profile/controller/st_profile_controller.dart';
 export 'package:lcd_loan/module/student/st_profile/view/st_profile_view.dart';
+export 'package:lcd_loan/module/student/st_profile/widget/st_edit_button.dart';
+export 'package:lcd_loan/module/student/st_profile/widget/st_logout_button.dart';
+export 'package:lcd_loan/module/student/st_profile/widget/st_profile_detail.dart';
+export 'package:lcd_loan/module/student/st_profile/widget/st_profile_detail_item.dart';
+export 'package:lcd_loan/module/student/st_profile/widget/st_profile_image.dart';
 export 'package:lcd_loan/module/student/st_scanner/controller/st_scanner_controller.dart';
 export 'package:lcd_loan/module/student/st_scanner/view/st_scanner_view.dart';
 export 'package:lcd_loan/module/student/st_scanner/widget/st_build_qr_view.dart';
