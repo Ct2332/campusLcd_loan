@@ -1,66 +1,51 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-
-import 'package:lcd_loan/core.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lcd_loan/shared/widget/cached_image/cached_image.dart';
+import 'package:shimmer/shimmer.dart';
+
+import '../../../../shared/util/custom_cache_manager/custom_cache_manager.dart';
 
 class StTopProfile extends StatelessWidget {
-  final String? title;
-  final String? titleContent;
-  final String? subTitle;
-  final String? subContent;
   final String? imgUrl;
   const StTopProfile({
     Key? key,
-    this.title,
-    this.titleContent,
-    this.subTitle,
-    this.subContent,
     this.imgUrl,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Get.to(const StHistoryView());
-      },
-      child: Container(
-        height: 120,
-        padding: const EdgeInsets.symmetric(
-          vertical: 12,
-          horizontal: 14,
+    return Row(
+      children: [
+        const WdCachedImage(
+          size: 40,
+          borderRadius: 20,
         ),
-        decoration: BoxDecoration(
-          color: Colors.indigo[50],
-          borderRadius: BorderRadius.circular(15),
-        ),
-        child: Row(
+        const SizedBox(width: 10),
+        Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            WdCachedImage(
-              size: 95,
-              imgUrl: imgUrl,
+            Text(
+              "Hey",
+              style: GoogleFonts.openSans(
+                height: 1,
+                fontSize: 13,
+                color: Colors.grey[400],
+                fontWeight: FontWeight.w500,
+              ),
             ),
-            const SizedBox(width: 10),
-            Expanded(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  StColumnText(
-                    title: title ?? 'Name',
-                    content: titleContent ?? 'Rely Arfadillah Erlangga',
-                  ),
-                  StColumnText(
-                    title: subTitle ?? 'NIM',
-                    content: subContent ?? '2004411285',
-                  ),
-                ],
+            Text(
+              "Rely Arfadillah",
+              style: GoogleFonts.openSans(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ],
         ),
-      ),
+      ],
     );
   }
 }

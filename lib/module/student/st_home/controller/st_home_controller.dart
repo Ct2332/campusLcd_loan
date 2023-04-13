@@ -25,11 +25,4 @@ class StHomeController extends State<StHomeView> implements MvcController {
   scanQrCode() {
     Get.to(const StScannerView());
   }
-
-  doLogOut() async {
-    log("Logged Out");
-    await FirebaseAuth.instance.signOut();
-    log("To Login Page");
-    Get.offAll(const LoginView());
-  }
 }

@@ -1,7 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class StLogoutButton extends StatelessWidget {
   final void Function()? onTap;
@@ -12,24 +10,34 @@ class StLogoutButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 35,
-      width: 65,
-      child: FloatingActionButton(
-        shape: ContinuousRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
-        onPressed: onTap,
-        backgroundColor: Colors.black,
-        child: Text(
-          "LogOut",
-          style: GoogleFonts.openSans(
-            fontSize: 13.5,
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
+    return Row(
+      children: [
+        InkWell(
+          onTap: onTap,
+          focusColor: Colors.indigo,
+          splashColor: Colors.red,
+          borderRadius: BorderRadius.circular(18),
+          child: Container(
+            width: 36,
+            height: 36,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(18),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.3),
+                  offset: const Offset(1, 6),
+                  blurRadius: 10,
+                ),
+              ],
+            ),
+            child: const Icon(
+              Icons.logout_rounded,
+              size: 20,
+            ),
           ),
         ),
-      ),
+      ],
     );
   }
 }

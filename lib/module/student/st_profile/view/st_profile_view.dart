@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lcd_loan/core.dart';
-import 'package:lcd_loan/module/student/st_profile/widget/st_back_button.dart';
 import 'package:lcd_loan/module/student/st_profile/widget/st_logout_button.dart';
 import 'package:lcd_loan/module/student/st_profile/widget/st_profile_detail.dart';
 import 'package:lcd_loan/module/student/st_profile/widget/st_profile_image.dart';
@@ -22,15 +21,20 @@ class StProfileView extends StatefulWidget {
         ),
         child: Column(
           children: [
-            StBackButton(
-              onTap: () {},
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                StLogoutButton(
+                  onTap: () => controller.doLogOut(),
+                ),
+              ],
             ),
             Expanded(
               child: ListView(
                 children: const [
                   SizedBox(height: 35),
                   StProfileImage(
-                    imgUrl: "https://bit.ly/43wLLI7",
+                    // imgUrl: "https://bit.ly/43wLLI7",
                     name: "Rely Arfadillah",
                     email: "shinmendenz@gmail.com",
                   ),
@@ -42,7 +46,6 @@ class StProfileView extends StatefulWidget {
           ],
         ),
       ),
-      floatingActionButton: StLogoutButton(),
     );
   }
 

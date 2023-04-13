@@ -33,7 +33,6 @@ export 'package:lcd_loan/module/student/st_history/controller/st_history_control
 export 'package:lcd_loan/module/student/st_history/view/st_history_view.dart';
 export 'package:lcd_loan/module/student/st_home/controller/st_home_controller.dart';
 export 'package:lcd_loan/module/student/st_home/view/st_home_view.dart';
-export 'package:lcd_loan/module/student/st_home/widget/st_column_text.dart';
 export 'package:lcd_loan/module/student/st_home/widget/st_home_app_bar.dart';
 export 'package:lcd_loan/module/student/st_home/widget/st_scanner_button.dart';
 export 'package:lcd_loan/module/student/st_home/widget/st_top_profile.dart';

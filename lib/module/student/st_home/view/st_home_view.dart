@@ -11,7 +11,7 @@ class StHomeView extends StatefulWidget {
     return Scaffold(
       body: SafeArea(
         minimum: const EdgeInsets.only(
-          top: 45,
+          top: 50,
           left: 20,
           right: 20,
         ),
@@ -24,7 +24,7 @@ class StHomeView extends StatefulWidget {
                   .snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
-                  return const CircularProgressIndicator();
+                  return const Center(child: CircularProgressIndicator());
                 }
 
                 final doc = snapshot.data!.docs.first;
@@ -32,23 +32,9 @@ class StHomeView extends StatefulWidget {
                 final name = doc.get('name') as String;
                 final nim = doc.get('nim') as String;
                 // final role = doc.get('role') as String;
-                return StTopProfile(
-                  imgUrl: "https://bit.ly/43wLLI7",
-                  titleContent: name,
-                  subContent: nim,
-                );
+                return StTopProfile();
               },
             ),
-            FilledButton(
-              onPressed: () => controller.doLogOut(),
-              child: const Text(
-                "LogOut",
-                style: TextStyle(
-                  fontSize: 15.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            )
           ],
         ),
       ),
