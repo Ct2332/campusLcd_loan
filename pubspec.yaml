@@ -46,6 +46,10 @@ dependencies:
   firebase_auth: ^4.4.0
   cloud_firestore: ^4.5.0
   shimmer: ^2.0.0
+  dio: ^5.1.1
+  file_picker: ^5.2.9
+  image_picker: ^0.8.7+2
+  flutter_animate: ^4.1.1+1
 
 dev_dependencies:
   flutter_test:

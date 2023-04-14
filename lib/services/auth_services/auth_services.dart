@@ -69,25 +69,39 @@ class AuthService {
     }
   }
 
-  static Future<void> saveStudentData({
+  static Future<void> addStudentData({
     required String email,
     required String name,
     required String nim,
   }) async {
     try {
-      var snapshot = await FirebaseFirestore.instance
-          .collection("students")
-          .doc(nim)
-          .get();
+      await FirebaseFirestore.instance.collection("students").add({
+        "foto": "https://bit.ly/413L5Z3",
+        "email": email,
+        "name": name,
+        "nim": nim,
+        "role": "Mahasiswa",
+      });
+    } catch (e) {
+      log(e.toString());
+    }
+  }
 
-      if (!snapshot.exists) {
-        await FirebaseFirestore.instance.collection("students").doc(nim).set({
-          "email": email,
-          "name": name,
-          "nim": nim,
-          "role": "Mahasiswa",
-        });
-      }
+  static Future<void> updateStudentData({
+    required String docId,
+    required String imgUrl,
+    required String name,
+    required String nim,
+  }) async {
+    try {
+      await FirebaseFirestore.instance
+          .collection("students")
+          .doc(docId)
+          .update({
+        "foto": imgUrl,
+        "name": name,
+        "nim": nim,
+      });
     } catch (e) {
       log(e.toString());
     }

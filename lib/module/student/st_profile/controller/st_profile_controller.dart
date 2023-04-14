@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:lcd_loan/module/student/st_profile_edit_form/view/st_profile_edit_form_view.dart';
 import 'package:lcd_loan/state_util.dart';
 import '../view/st_profile_view.dart';
 
@@ -31,5 +32,22 @@ class StProfileController extends State<StProfileView>
     } on Exception catch (e) {
       log(e.toString());
     }
+  }
+
+  toEditProfile({
+    required String imgUrl,
+    required String docId,
+    required String name,
+    required String nim,
+  }) {
+    log("Navigate to Edit Profile Page");
+    Get.to(
+      StProfileEditFormView(
+        docId: docId,
+        imgUrl: imgUrl,
+        name: name,
+        nim: nim,
+      ),
+    );
   }
 }

@@ -36,6 +36,7 @@ export 'package:lcd_loan/module/student/st_home/view/st_home_view.dart';
 export 'package:lcd_loan/module/student/st_home/widget/st_home_app_bar.dart';
 export 'package:lcd_loan/module/student/st_home/widget/st_scanner_button.dart';
 export 'package:lcd_loan/module/student/st_home/widget/st_top_profile.dart';
+export 'package:lcd_loan/module/student/st_home/widget/st_top_profile_loading.dart';
 export 'package:lcd_loan/module/student/st_lcd_detail/controller/st_lcd_detail_controller.dart';
 export 'package:lcd_loan/module/student/st_lcd_detail/view/st_lcd_detail_view.dart';
 export 'package:lcd_loan/module/student/st_lcd_detail/widget/st_borrow_button.dart';
@@ -52,6 +53,9 @@ export 'package:lcd_loan/module/student/st_profile/widget/st_logout_button.dart'
 export 'package:lcd_loan/module/student/st_profile/widget/st_profile_detail.dart';
 export 'package:lcd_loan/module/student/st_profile/widget/st_profile_detail_item.dart';
 export 'package:lcd_loan/module/student/st_profile/widget/st_profile_image.dart';
+export 'package:lcd_loan/module/student/st_profile/widget/st_profile_view_loading.dart';
+export 'package:lcd_loan/module/student/st_profile_edit_form/controller/st_profile_edit_form_controller.dart';
+export 'package:lcd_loan/module/student/st_profile_edit_form/view/st_profile_edit_form_view.dart';
 export 'package:lcd_loan/module/student/st_scanner/controller/st_scanner_controller.dart';
 export 'package:lcd_loan/module/student/st_scanner/view/st_scanner_view.dart';
 export 'package:lcd_loan/module/student/st_scanner/widget/st_build_qr_view.dart';

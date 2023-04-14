@@ -31,9 +31,11 @@ class StHomeView extends StatefulWidget {
                 final doc = snapshot.data!.docs.first;
                 // final email = doc.get('email') as String;
                 final name = doc.get('name') as String;
-                final nim = doc.get('nim') as String;
+                final imgUrl = doc.get('foto') as String;
+                // final nim = doc.get('nim') as String;
                 // final role = doc.get('role') as String;
                 return StTopProfile(
+                  imgUrl: imgUrl,
                   name: name,
                 );
                 // return StTopProfile(

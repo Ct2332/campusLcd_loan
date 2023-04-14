@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lcd_loan/core.dart';
-import 'package:lcd_loan/module/auth/email_verification/widget/at_email_verify.dart';
 
 class EmailVerificationView extends StatefulWidget {
   const EmailVerificationView({Key? key}) : super(key: key);

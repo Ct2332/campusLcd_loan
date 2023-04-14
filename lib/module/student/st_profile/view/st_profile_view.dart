@@ -38,7 +38,9 @@ class StProfileView extends StatefulWidget {
                 }
 
                 final doc = snapshot.data!.docs.first;
+                final docId = doc.id;
                 final email = doc.get('email') as String;
+                final imgUrl = doc.get('foto') as String;
                 final name = doc.get('name') as String;
                 final nim = doc.get('nim') as String;
                 // final role = doc.get('role') as String;
@@ -48,9 +50,15 @@ class StProfileView extends StatefulWidget {
                     children: [
                       const SizedBox(height: 35),
                       StProfileImage(
-                        // imgUrl: "https://bit.ly/43wLLI7",
+                        imgUrl: imgUrl,
                         name: name,
                         email: email,
+                        onEdit: () => controller.toEditProfile(
+                          docId: docId,
+                          imgUrl: imgUrl,
+                          name: name,
+                          nim: nim,
+                        ),
                       ),
                       const SizedBox(height: 25),
                       const StProfileDetail(),

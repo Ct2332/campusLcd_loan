@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:lcd_loan/core.dart';
-import 'package:lcd_loan/module/student/st_profile/widget/st_edit_button.dart';
 
 class StProfileImage extends StatelessWidget {
   final String? imgUrl;

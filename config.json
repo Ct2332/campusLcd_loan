@@ -8,6 +8,7 @@
         "student/st_home",
         "student/st_history",
         "student/st_profile",
+        "student/st_profile_edit_form",
         "student/st_scanner",
         "student/st_lcd_detail",
         "admin/adm_main_navigation",
